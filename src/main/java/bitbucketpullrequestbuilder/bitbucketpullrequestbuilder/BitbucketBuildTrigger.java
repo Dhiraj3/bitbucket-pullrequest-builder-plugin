@@ -1,32 +1,20 @@
 package bitbucketpullrequestbuilder.bitbucketpullrequestbuilder;
 
+import antlr.ANTLRException;
 import hudson.Extension;
-import hudson.model.Item;
-import hudson.model.ParameterValue;
-import hudson.model.AbstractProject;
-import hudson.model.ParametersAction;
-import hudson.model.StringParameterValue;
+import hudson.model.*;
 import hudson.model.queue.QueueTaskFuture;
 import hudson.triggers.Trigger;
 import hudson.triggers.TriggerDescriptor;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.regex.Pattern;
-
 import jenkins.model.Jenkins;
 import net.sf.json.JSONObject;
-
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import antlr.ANTLRException;
+import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * Created by nishio
@@ -219,7 +207,7 @@ public class BitbucketBuildTrigger extends Trigger<AbstractProject<?, ?>> {
         values.put("sourceBranch", new StringParameterValue("sourceBranch", cause.getSourceBranch()));
         values.put("targetBranch", new StringParameterValue("targetBranch", cause.getTargetBranch()));
         values.put("repositoryOwner", new StringParameterValue("repositoryOwner", cause.getRepositoryOwner()));
-        values.put("repositonyName", new StringParameterValue("repositoryName", cause.getRepositoryName()));
+        values.put("repositoryName", new StringParameterValue("repositoryName", cause.getRepositoryName()));
         values.put("pullRequestId", new StringParameterValue("pullRequestId", cause.getPullRequestId()));
         values.put("destinationRepositoryOwner",
             new StringParameterValue("destinationRepositoryOwner", cause.getDestinationRepositoryOwner()));
